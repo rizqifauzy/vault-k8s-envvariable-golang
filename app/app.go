@@ -8,9 +8,17 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	// Load environment variables from vault
+	err := godotenv.Load("/vault/secrets/.envvault")
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+
 	message := os.Getenv("MESSAGE")
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")

@@ -13,7 +13,6 @@ spec:
       labels:
         app: mysql
     spec:
-      serviceAccountName: vault-role
       containers:
         - name: mysql
           image: mysql:latest
